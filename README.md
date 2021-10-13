@@ -89,7 +89,7 @@ Transfer/sec:      2.68MB
 ## phpinfo page
 Command issued from __Docker__ host
 ```
-/usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
+/usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/
 ```
 
 ### Summary:

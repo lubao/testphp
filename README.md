@@ -18,29 +18,29 @@ Graviton2:
 ## Docker Build/Run Command
 *x86*
 ```
-$ git clone https://github.com/lubao/testphp.git
-$ cd testphp/x86
-$ docker build -t testphp .
-$ docker run -it -p 8080:80 --cpus=1 --memory=512m --entrypoint /bin/bash testphp:latest
+git clone https://github.com/lubao/testphp.git
+cd testphp/x86
+docker build -t testphp .
+docker run -it -p 8080:80 --cpus=1 --memory=512m --entrypoint /bin/bash testphp:latest
 ```
 *arm64v8*
 ```
-$ git clone https://github.com/lubao/testphp.git
-$ cd testphp/arm64v8
-$ docker build -t testphp .
-$ docker run -it -p 8080:80 --cpus=1 --memory=512m --entrypoint /bin/bash testphp:latest
+git clone https://github.com/lubao/testphp.git
+cd testphp/arm64v8
+docker build -t testphp .
+docker run -it -p 8080:80 --cpus=1 --memory=512m --entrypoint /bin/bash testphp:latest
 ```
 *within container*
 ```
-$ /usr/local/sbin/php-fpm
-$ service nginx start
+/usr/local/sbin/php-fpm
+service nginx start
 ```
 # Result
 
 ## PHP-FPM Ping page
 Command issued from __Docker__ host
 ```
-$ /usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
+/usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
 ```
 
 ### Summary:
@@ -89,7 +89,7 @@ Transfer/sec:      2.68MB
 ## phpinfo page
 Command issued from __Docker__ host
 ```
-$ /usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
+/usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
 ```
 
 ### Summary:

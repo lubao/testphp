@@ -1,22 +1,39 @@
 # testphp
 Test php-fpm ping and phpinfo page performance on Graviton2 (c6g.xlarge) and x86-64 (c5g.xlarge)
 
-# WRK - Test Tool
+# Test Tool - WRK
 https://bipulkkuri.medium.com/install-wrk-on-centos-redhat-7d9291de15d7
 
-# Docker Host
+# Test Architecture
+
+## Docker Host
 x86-64:
 * Instance Type : c5.xlarge
-* AMI ID : ami-091aa67fccd794d5f
+* AMI ID : ami-091aa67fccd794d5f (ECS Optimized)
 
 Graviton2:
 * Instance Type: c6g.xlarge
-* AMI ID: ami-009b187c8747c8482[
+* AMI ID: ami-009b187c8747c8482 (ECS Optimized)
 
+## Docker Build/Run Command
+*x86*
+```
+$ git clone https://github.com/lubao/testphp.git
+$ cd testphp/x86
+$ docker build -t testphp .
+$ docker run -it -p 8080:80 --cpus=1 --memory=512m --entrypoint /bin/bash testphp:latest
+```
+*arm64v8*
+```
+$ git clone https://github.com/lubao/testphp.git
+$ cd testphp/arm64v8
+$ docker build -t testphp .
+$ docker run -it -p 8080:80 --cpus=1 --memory=512m --entrypoint /bin/bash testphp:latest
+```
 # Result
 
 ## PHP-FPM Ping page
-Commnad : /usr/local/bin/wrk -t1 -c5 -d60 --latency -v $URL
+Commnad : /usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
 * command issued from docker host
 
 ### Summary:

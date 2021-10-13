@@ -30,15 +30,22 @@ $ cd testphp/arm64v8
 $ docker build -t testphp .
 $ docker run -it -p 8080:80 --cpus=1 --memory=512m --entrypoint /bin/bash testphp:latest
 ```
+*within container*
+```
+$ /usr/local/sbin/php-fpm
+$ service nginx start
+```
 # Result
 
 ## PHP-FPM Ping page
-Commnad : /usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
-* command issued from docker host
+Command issued from __Docker__ host
+```
+$ /usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
+```
 
 ### Summary:
-* c5.xlarge  RPS: 7181.01
-* c6g.xlarge RPS: 8713.24
+* c5.xlarge  RPS: __7181.01__
+* c6g.xlarge RPS: __8713.24__
 
 ### Detail:
 * c5.xlarge
@@ -79,13 +86,15 @@ Requests/sec:   8713.24
 Transfer/sec:      2.68MB
 ```
 
-## phpinfo() page
-Commnad : /usr/local/bin/wrk -t1 -c5 -d60 --latency -v $URL
-* command issued from docker host
+## phpinfo page
+Command issued from __Docker__ host
+```
+$ /usr/local/bin/wrk -t1 -c5 -d60 --latency -v http://localhost:8080/ping
+```
 
 ### Summary:
-* c5.xlarge  RPS: 1456.03
-* c6g.xlarge RPS: 1655.57
+* c5.xlarge  RPS: __1456.03__
+* c6g.xlarge RPS: __1655.57__
 
 ### Detail:
 * c5.xlarge
